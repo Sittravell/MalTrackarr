@@ -201,6 +201,8 @@ def fetch_anime_ids_map() -> Dict[int, Dict[str, Any]]:
 
 def build_output_list(animelist_items: List[Dict[str, Any]], anime_ids_map: Dict[int, Dict[str, Any]]) -> List[Dict[str, Any]]:
     out = []
+    # out = [{"id":157336,"imdb_id":"tt0816692","title":"Interstellar","release_year":"2014","clean_title":"/film/interstellar/","adult":False}]
+    # out = [{"title":"Interstellar", "adult":False, "id":157336}]
     for item in animelist_items:
         node = item.get("node") or {}
         mal_id = node.get("id")
@@ -208,16 +210,15 @@ def build_output_list(animelist_items: List[Dict[str, Any]], anime_ids_map: Dict
         if not mal_id:
             continue
         entry = {"title": title, "malId": mal_id}
-        # Lookup by mal_id
+        #Lookup by mal_id
         mapped = anime_ids_map.get(int(mal_id))
         if mapped:
             # tvdb_id may be present as 'tvdb_id'
             if "tvdb_id" in mapped and mapped.get("tvdb_id") not in (None, ""):
-                entry["tvdbId"] = mapped["tvdb_id"]
+                entry["id"] = mapped["tvdb_id"]
             # imdb_id may be present as 'imdb_id' (often like "tt0119698")
             if "imdb_id" in mapped and mapped.get("imdb_id"):
                 entry["imdb_id"] = mapped["imdb_id"]
-                entry["imdbId"] = mapped["imdb_id"]
         out.append(entry)
     return out
 

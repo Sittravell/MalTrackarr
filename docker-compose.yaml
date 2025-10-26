@@ -6,4 +6,4 @@ services:
     ports:
       - "3434:3434"
     volumes:
-      - ./config.json:/app/config.json
+      - ../config.json:/app/config.json
