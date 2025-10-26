@@ -1,0 +1,7 @@
+{
+    "client_id": "YOUR_CLIENT_ID",
+    "client_secret": "YOUR_CLIENT_SECRET",
+    "authorization_code": "YOUR_AUTHORIZATION_CODE",
+    "username": "YOUR_MAL_USERNAME",
+    "code_verifier": "YOUR_CODE_VERIFIER"
+}

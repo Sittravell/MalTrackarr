@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  maltrackarr:
+    image: sittravell/maltrackarr:latest
+    container_name: maltrackarr
+    ports:
+      - "3434:3434"
+    volumes:
+      - ./config.json:/app/config.json
